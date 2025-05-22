@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +17,11 @@
       font-weight: bold;
     }
     .hero {
-      background-color: #00563f;
+      background: url('https://images.unsplash.com/photo-1577896851231-70ef18881754') no-repeat center center;
+      background-size: cover;
       color: white;
-      padding: 80px 0;
+      padding: 120px 0;
+      text-shadow: 1px 1px 2px #000;
     }
     .hero h1 {
       font-size: 3rem;
@@ -47,7 +50,8 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="universities.html">Universities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cities">Cities & Universities</a></li>
           <li class="nav-item"><a class="nav-link" href="#apply">Apply</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
@@ -64,67 +68,49 @@
     </div>
   </section>
 
-  <!-- Universities Section -->
-  <section id="universities" class="py-5">
+  <!-- Programs Offered Section -->
+  <section id="programs" class="py-5">
     <div class="container">
-      <h2 class="text-center mb-4">Featured Universities</h2>
+      <h2 class="text-center mb-4">Programs Offered in Zambia</h2>
       <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">University of Zambia (UNZA)</h5>
-              <p class="card-text">Zambia's largest and oldest university, offering a variety of programs in science, arts, and business.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Copperbelt University (CBU)</h5>
-              <p class="card-text">A top-tier university located in Kitwe, known for engineering, medicine, and education programs.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Mulungushi University</h5>
-              <p class="card-text">Emerging as a leader in distance and blended learning across Zambia and beyond.</p>
-            </div>
-          </div>
-        </div>
+        <div class="col-md-4"><div class="card"><div class="card-body"><h5>Health Sciences</h5><ul><li>Bachelor of Medicine</li><li>Master of Public Health</li><li>Certificate in Nursing</li></ul></div></div></div>
+        <div class="col-md-4"><div class="card"><div class="card-body"><h5>Generalist</h5><ul><li>Bachelor of Arts</li><li>Master of Arts</li><li>Short Courses</li></ul></div></div></div>
+        <div class="col-md-4"><div class="card"><div class="card-body"><h5>Education</h5><ul><li>Bachelor of Education</li><li>Master of Education</li><li>Doctorate in Curriculum Studies</li></ul></div></div></div>
+        <div class="col-md-4"><div class="card"><div class="card-body"><h5>Law</h5><ul><li>Bachelor of Laws</li><li>Master of Laws</li><li>Diploma in Legal Studies</li></ul></div></div></div>
+        <div class="col-md-4"><div class="card"><div class="card-body"><h5>Business</h5><ul><li>Bachelor of Business Admin</li><li>MBA</li><li>Doctorate in Economics</li></ul></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Application Form -->
+  <!-- Cities & Universities Section -->
+  <section id="cities" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Zambian Cities & Their Universities</h2>
+      <div class="row g-4">
+        <div class="col-md-4"><h5>Lusaka</h5><ul><li>University of Zambia (UNZA)</li><li>University of Lusaka (UNILUS)</li></ul></div>
+        <div class="col-md-4"><h5>Kitwe</h5><ul><li>Copperbelt University (CBU)</li></ul></div>
+        <div class="col-md-4"><h5>Kabwe</h5><ul><li>Mulungushi University</li></ul></div>
+        <div class="col-md-4"><h5>Ndola</h5><ul><li>Levy Mwanawasa Medical University</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="py-5">
+    <div class="container text-center">
+      <h2>Search Programs or Universities</h2>
+      <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search for a program or university..." onkeyup="searchPrograms()">
+      <div id="searchResults"></div>
+    </div>
+  </section>
+
+  <!-- Application Form / Google Form Embed -->
   <section id="apply" class="py-5 bg-light">
     <div class="container">
-      <h2 class="text-center mb-4">Apply Now</h2>
-      <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" class="mx-auto" style="max-width: 600px;">
-        <div class="mb-3">
-          <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="mb-3">
-          <label for="university" class="form-label">Choose University</label>
-          <select class="form-select" id="university" name="university" required>
-            <option value="">-- Select --</option>
-            <option value="UNZA">University of Zambia</option>
-            <option value="CBU">Copperbelt University</option>
-            <option value="Mulungushi">Mulungushi University</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Why do you want to study in Zambia?</label>
-          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Submit Application</button>
-      </form>
+      <h2 class="text-center mb-4">Register Now</h2>
+      <div class="ratio ratio-16x9">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMVG5WwQMKz0kEDhcYu6oVoJZkYZkzU5O0n9UzIOM1p9Rg/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
     </div>
   </section>
 
@@ -144,6 +130,24 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function searchPrograms() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const data = [
+        'University of Zambia',
+        'Copperbelt University',
+        'Mulungushi University',
+        'Bachelor of Medicine',
+        'Master of Public Health',
+        'MBA',
+        'Kitwe',
+        'Lusaka',
+        'UNILUS'
+      ];
+      const results = data.filter(item => item.toLowerCase().includes(query));
+      document.getElementById('searchResults').innerHTML = results.length ? '<ul>' + results.map(r => '<li>' + r + '</li>').join('') + '</ul>' : '<p>No results found.</p>';
+    }
+  </script>
 </body>
 
 </html>
