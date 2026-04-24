@@ -49,5 +49,5 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
 # Expose port
 EXPOSE 80
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Run migrations and start Apache
+CMD php artisan migrate --seed --force && apache2-foreground
