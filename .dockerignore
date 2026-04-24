@@ -1,0 +1,15 @@
+/node_modules
+/vendor
+/public/build
+/public/storage
+.env
+.git
+.gitignore
+Dockerfile
+render.yaml
+README.md
+storage/*.key
+tests
+phpunit.xml
+.editorconfig
+.gitattributes
