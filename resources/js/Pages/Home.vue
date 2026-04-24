@@ -16,7 +16,7 @@ defineProps({
         <div class="relative bg-emerald-900 overflow-hidden py-24 sm:py-32">
             <div class="absolute inset-0">
                 <div class="absolute inset-0 bg-gradient-to-r from-emerald-950 to-transparent opacity-90"></div>
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=2000" alt="Zambian University" class="w-full h-full object-cover" />
+                <img src="/images/hero-bg.jpg" alt="SIZA - Study in Zambia" class="w-full h-full object-cover" />
             </div>
             
             <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center sm:text-left">
