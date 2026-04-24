@@ -74,11 +74,20 @@ class UniversitySeeder extends Seeder
             unset($uniData['programmes']);
 
             $uniData['slug'] = Str::slug($uniData['name']);
-            $university = University::create($uniData);
+            
+            // Use updateOrCreate to avoid duplicate errors
+            $university = University::updateOrCreate(
+                ['slug' => $uniData['slug']],
+                $uniData
+            );
 
             foreach ($programmes as $progData) {
                 $progData['slug'] = Str::slug($progData['name']);
-                $university->programmes()->create($progData);
+                
+                $university->programmes()->updateOrCreate(
+                    ['slug' => $progData['slug']],
+                    $progData
+                );
             }
         }
     }
