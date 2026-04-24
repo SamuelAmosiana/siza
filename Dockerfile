@@ -36,7 +36,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Install Node.js for frontend build
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y border-js nodejs && \
+    apt-get install -y nodejs && \
     npm install && \
     npm run build
 
