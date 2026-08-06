@@ -14,6 +14,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', function () {
     return Inertia::render('About');
 })->name('about');
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
 
 Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
 Route::get('/universities/{university}', [UniversityController::class, 'show'])->name('universities.show');
