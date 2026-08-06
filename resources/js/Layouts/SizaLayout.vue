@@ -22,6 +22,7 @@ const isMenuOpen = ref(false);
                         <Link :href="route('home')" :class="{'text-emerald-400': $page.component === 'Home'}" class="hover:text-emerald-300 transition-colors font-medium">Home</Link>
                         <Link :href="route('universities.index')" :class="{'text-emerald-400': $page.component === 'Universities/Index'}" class="hover:text-emerald-300 transition-colors font-medium">Universities</Link>
                         <Link :href="route('programmes.index')" :class="{'text-emerald-400': $page.component === 'Programmes/Index'}" class="hover:text-emerald-300 transition-colors font-medium">Programmes</Link>
+                        <Link :href="route('about')" :class="{'text-emerald-400': $page.component === 'About'}" class="hover:text-emerald-300 transition-colors font-medium">About</Link>
                         <Link :href="route('apply.create')" class="bg-emerald-500 hover:bg-emerald-600 px-5 py-2 rounded-full font-bold transition-all transform hover:scale-105">Apply Now</Link>
                     </div>
 
@@ -39,9 +40,10 @@ const isMenuOpen = ref(false);
 
             <!-- Mobile Menu -->
             <div v-show="isMenuOpen" class="md:hidden bg-emerald-800 border-t border-emerald-700 px-4 pt-2 pb-4 space-y-1">
-                <Link :href="route('home')" class="block px-3 py-2 rounded-md hover:bg-emerald-700 font-medium">Home</Link>
-                <Link :href="route('universities.index')" class="block px-3 py-2 rounded-md hover:bg-emerald-700 font-medium">Universities</Link>
-                <Link :href="route('programmes.index')" class="block px-3 py-2 rounded-md hover:bg-emerald-700 font-medium">Programmes</Link>
+                <Link :href="route('home')" :class="{'text-emerald-400': $page.component === 'Home'}" class="block px-3 py-2 rounded-md hover:bg-emerald-700 font-medium">Home</Link>
+                <Link :href="route('universities.index')" :class="{'text-emerald-400': $page.component.startsWith('Universities/')}" class="block px-3 py-2 rounded-md hover:bg-emerald-700 font-medium">Universities</Link>
+                <Link :href="route('programmes.index')" :class="{'text-emerald-400': $page.component.startsWith('Programmes/')}" class="block px-3 py-2 rounded-md hover:bg-emerald-700 font-medium">Programmes</Link>
+                <Link :href="route('about')" :class="{'text-emerald-400': $page.component === 'About'}" class="block px-3 py-2 rounded-md hover:bg-emerald-700 font-medium">About</Link>
                 <Link :href="route('apply.create')" class="block px-3 py-2 bg-emerald-500 rounded-md font-bold text-center">Apply Now</Link>
             </div>
         </nav>
@@ -63,6 +65,7 @@ const isMenuOpen = ref(false);
                     <ul class="space-y-2 text-sm">
                         <li><Link :href="route('universities.index')" class="hover:text-emerald-400">University Directory</Link></li>
                         <li><Link :href="route('programmes.index')" class="hover:text-emerald-400">Available Programmes</Link></li>
+                        <li><Link :href="route('about')" class="hover:text-emerald-400">About SIZA</Link></li>
                         <li><Link :href="route('apply.create')" class="hover:text-emerald-400">Online Application</Link></li>
                     </ul>
                 </div>
