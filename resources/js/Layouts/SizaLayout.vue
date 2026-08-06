@@ -10,10 +10,10 @@ const isMenuOpen = ref(false);
         <!-- Navigation -->
         <nav class="bg-emerald-900 text-white shadow-lg sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16">
+                <div class="flex justify-between h-24">
                     <div class="flex items-center">
-                        <Link :href="route('home')" class="flex items-center py-1">
-                            <img src="/images/siza_logo.png" alt="SIZA - Study in Zambia" class="h-10 w-auto object-contain" />
+                        <Link :href="route('home')" class="flex items-center py-2">
+                            <img src="/images/siza_logo.png" alt="SIZA - Study in Zambia" class="h-20 w-auto object-contain" />
                         </Link>
                     </div>
 
