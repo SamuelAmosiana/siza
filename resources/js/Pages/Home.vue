@@ -142,6 +142,12 @@ const submitInquiry = () => {
                         </div>
                     </div>
                 </div>
+
+                <div class="mt-12 text-center">
+                    <Link :href="route('universities.index')" class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-8 transition-all transform hover:scale-105 shadow-md shadow-emerald-100">
+                        Explore More
+                    </Link>
+                </div>
             </div>
         </div>
 
