@@ -18,6 +18,15 @@ Route::get('/contact', function () {
     return Inertia::render('Contact');
 })->name('contact');
 
+Route::post('/contact', function (Illuminate\Http\Request $request) {
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'message' => 'required|string|max:2000',
+    ]);
+    return back()->with('success', 'Inquiry submitted successfully! We will get back to you shortly.');
+})->name('contact.store');
+
 Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
 Route::get('/universities/{university}', [UniversityController::class, 'show'])->name('universities.show');
 
