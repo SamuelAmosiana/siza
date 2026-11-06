@@ -37,7 +37,7 @@ Route::get('/universities/{university}', [UniversityController::class, 'show'])-
 Route::get('/programmes', [ProgrammeController::class, 'index'])->name('programmes.index');
 
 Route::get('/apply', [ApplicationController::class, 'create'])->name('apply.create');
-Route::post('/apply', [ApplicationController::class, 'store'])->name('apply.store');
+Route::post('/apply', [ApplicationController::class, 'store'])->middleware('throttle:5,1')->name('apply.store');
 
 // Dashboard & Auth (Created by Breeze)
 Route::get('/dashboard', function () {

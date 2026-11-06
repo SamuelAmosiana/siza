@@ -1,4 +1,5 @@
 <script setup>
+import DemoBanner from '@/Components/DemoBanner.vue';
 import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -7,6 +8,8 @@ const isMenuOpen = ref(false);
 
 <template>
     <div class="min-h-screen bg-emerald-50">
+        <DemoBanner />
+
         <!-- Navigation -->
         <nav class="bg-emerald-900 text-white shadow-lg sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
