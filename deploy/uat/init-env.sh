@@ -11,7 +11,6 @@ fi
 umask 077
 DB_PASSWORD=$(openssl rand -hex 24)
 DB_ROOT_PASSWORD=$(openssl rand -hex 24)
-BASIC_PASSWORD=$(openssl rand -hex 12)
 
 cat > .env.uat <<EOF
 APP_NAME="SIZA UAT"
@@ -40,11 +39,7 @@ SESSION_SECURE_COOKIE=true
 CACHE_STORE=database
 QUEUE_CONNECTION=sync
 MAIL_MAILER=log
-
-UAT_BASIC_USER=siza
-UAT_BASIC_PASSWORD=$BASIC_PASSWORD
 EOF
 
 chmod 600 .env.uat
 echo "Created $(pwd)/.env.uat"
-echo "UAT site login: siza / $BASIC_PASSWORD"

@@ -1,10 +1,6 @@
 #!/bin/sh
 set -e
 
-htpasswd -bc /etc/apache2/uat.htpasswd "$UAT_BASIC_USER" "$UAT_BASIC_PASSWORD"
-chown root:www-data /etc/apache2/uat.htpasswd
-chmod 640 /etc/apache2/uat.htpasswd
-
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
