@@ -16,7 +16,8 @@ WORKDIR /app
 COPY package.json package-lock.json vite.config.js postcss.config.js tailwind.config.js jsconfig.json ./
 COPY resources ./resources
 COPY --from=vendor /app/vendor ./vendor
-ENV VITE_APP_NAME="SIZA UAT"
+ENV VITE_APP_NAME="SIZA"
+ENV VITE_SHOW_DEMO_BANNER=true
 # The host is short on memory, so keep the build from competing with live sites.
 ENV NODE_OPTIONS=--max-old-space-size=512
 RUN npm ci --no-audit --no-fund && npm run build

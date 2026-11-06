@@ -13,7 +13,7 @@ DB_PASSWORD=$(openssl rand -hex 24)
 DB_ROOT_PASSWORD=$(openssl rand -hex 24)
 
 cat > .env.uat <<EOF
-APP_NAME="SIZA UAT"
+APP_NAME="SIZA"
 APP_ENV=uat
 APP_KEY=base64:$(openssl rand -base64 32)
 APP_DEBUG=false
