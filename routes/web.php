@@ -19,13 +19,17 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/contact', function (Illuminate\Http\Request $request) {
-    $request->validate([
+    $validated = $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
+        'subject' => 'nullable|string|max:255',
         'message' => 'required|string|max:2000',
     ]);
+
+    App\Models\ContactMessage::create($validated);
+
     return back()->with('success', 'Inquiry submitted successfully! We will get back to you shortly.');
-})->name('contact.store');
+})->middleware('throttle:5,1')->name('contact.store');
 
 Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
 Route::get('/universities/{university}', [UniversityController::class, 'show'])->name('universities.show');

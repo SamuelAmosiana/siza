@@ -1,9 +1,9 @@
 <script setup>
 import SizaLayout from '@/Layouts/SizaLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
-const form = ref({
+const form = useForm({
     name: '',
     email: '',
     subject: '',
@@ -11,16 +11,15 @@ const form = ref({
 });
 
 const isSubmitted = ref(false);
-const isSubmitting = ref(false);
 
 const submitForm = () => {
-    isSubmitting.value = true;
-    // Simulate API request delay
-    setTimeout(() => {
-        isSubmitting.value = false;
-        isSubmitted.value = true;
-        form.value = { name: '', email: '', subject: '', message: '' };
-    }, 1500);
+    form.post(route('contact.store'), {
+        preserveScroll: true,
+        onSuccess: () => {
+            isSubmitted.value = true;
+            form.reset();
+        },
+    });
 };
 </script>
 
@@ -200,12 +199,16 @@ const submitForm = () => {
                                     ></textarea>
                                 </div>
 
-                                <button 
-                                    type="submit" 
-                                    :disabled="isSubmitting"
+                                <p v-if="form.hasErrors" class="text-sm text-red-600">
+                                    {{ Object.values(form.errors)[0] }}
+                                </p>
+
+                                <button
+                                    type="submit"
+                                    :disabled="form.processing"
                                     class="w-full bg-emerald-600 hover:bg-emerald-500 text-white rounded-full py-4 text-sm font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                                 >
-                                    <span v-if="isSubmitting">Transmitting message...</span>
+                                    <span v-if="form.processing">Transmitting message...</span>
                                     <span v-else class="flex items-center gap-1.5">
                                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

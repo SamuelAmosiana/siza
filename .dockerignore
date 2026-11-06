@@ -3,6 +3,7 @@
 /public/build
 /public/storage
 .env
+deploy/uat/.env.uat
 .git
 .gitignore
 Dockerfile

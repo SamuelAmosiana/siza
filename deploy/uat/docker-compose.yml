@@ -1,0 +1,47 @@
+name: siza-uat
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: deploy/uat/Dockerfile
+    restart: unless-stopped
+    env_file: .env.uat
+    depends_on:
+      db:
+        condition: service_healthy
+    # Loopback only: the host's nginx is the only public entry point.
+    ports:
+      - "127.0.0.1:8005:80"
+    mem_limit: 256m
+    logging: *logging
+
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    env_file: .env.uat
+    # Sized for a shared host. No ports are published to the host.
+    command:
+      - --innodb-buffer-pool-size=64M
+      - --performance-schema=OFF
+      - --max-connections=30
+      - --skip-name-resolve
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    mem_limit: 300m
+    logging: *logging
+
+volumes:
+  db-data:
